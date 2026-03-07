@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecoyaan Checkout Flow
 
-## Getting Started
+This is a Next.js (App Router) application that implements a streamlined, responsive, and aesthetically pleasing checkout flow for Ecoyaan. 
 
-First, run the development server:
+## Features
+- **Server-Side Rendering (SSR)**: The initial cart data is fetched dynamically using Next.js Server Components.
+- **State Management**: Uses React Context (`CheckoutContext`) to seamlessly pass cart, summary, and address details across steps without prop drilling.
+- **Form Validation**: Comprehensive client-side validation for emails, 10-digit phone numbers, and 6-digit PIN codes.
+- **Responsive Design**: Built entirely with Tailwind CSS, ensuring a mobile-first, fluid layout across all screen sizes.
+- **Modern UI/UX**: Incorporates clean visuals, micro-animations, green eco-themed accents, and Lucide icons to look highly premium.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
+- **Next.js 15 (App Router)**
+- **React 19**
+- **Tailwind CSS 4**
+- **TypeScript**
+- **Lucide React** (Icons)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup & Running Locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository** (if applicable) or navigate to the project directory:
+   ```bash
+   cd ecoyaan-checkout
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+   *(Required dependencies include Next.js, React, Tailwind, and `lucide-react`)*
 
-## Learn More
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Architectural Choices
+- **Context API for State**: Given this is a 3-step checkout form flow, `Context` allows us to cleanly keep cart data, address form values, and computed subtotals in a unified store available across all pages (`/`, `/checkout/address`, `/checkout/payment`). This guarantees the data persists without needing external state libraries like Redux.
+- **Next.js App Router layout mapping**: The top-level `layout.tsx` is an async component that fetches initial data and wraps the `<CheckoutProvider>`. This guarantees the SSR happens efficiently once, setting up the context with real data on first load.
+- **Client Components mapping**: Since Context and interactivity (buttons, forms) need browser APIs, inner screens are `'use client'`. 
+- **Mock API Pattern**: Instead of a full `route.ts`, an async delay function `fetchCheckoutData` mimics network fetching during SSR.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Developer
+Developed for Ecoyaan Frontend Engineering Interview.
