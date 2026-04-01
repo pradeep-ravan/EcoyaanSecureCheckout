@@ -2,40 +2,78 @@
 
 import { useCheckout } from "@/context/CheckoutContext";
 import { Header } from "@/components/Header";
-import { Minus, Plus, Trash2, ShoppingBag, Leaf } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingBag, Leaf, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function CartPage() {
-  const { cartItems, subtotal, shippingFee, grandTotal, discountApplied, updateQuantity, removeItem } = useCheckout();
+  const { cartItems, subtotal, shippingFee, grandTotal, discountApplied, updateQuantity, removeItem, isHydrated } = useCheckout();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setMounted(true);
+  }, []);
+
+  if (!mounted || !isHydrated) {
+    return (
+      <>
+        <Header />
+        <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex justify-center items-center h-screen pt-24">
+          <div className="relative">
+             <div className="absolute -inset-4 rounded-full bg-emerald-100 blur-xl opacity-50 animate-pulse"></div>
+             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 relative z-10"></div>
+          </div>
+        </main>
+      </>
+    );
+  }
 
   return (
     <>
       <Header />
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="flex items-center gap-3 mb-8">
-          <ShoppingBag className="w-8 h-8 text-emerald-600" />
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Your Cart</h1>
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 pb-32 lg:pb-16 pt-24 animate-fade-in relative z-0">
+        
+        {/* Subtle background blur blobs */}
+        <div className="absolute top-10 left-10 w-64 h-64 bg-emerald-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+        <div className="absolute bottom-40 right-10 w-80 h-80 bg-teal-100/40 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+
+        <div className="flex items-center gap-4 mb-10 animate-slide-up">
+          <div className="bg-gradient-to-tr from-emerald-100 to-teal-50 p-3 rounded-2xl shadow-inner border border-white">
+            <ShoppingBag className="w-8 h-8 text-emerald-600" />
+          </div>
+          <div>
+            <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 tracking-tight">Your Cart</h1>
+            <p className="text-gray-500 mt-1 font-medium flex items-center gap-1">
+              <Sparkles className="w-4 h-4 text-emerald-400" /> Great choices for a greener planet
+            </p>
+          </div>
         </div>
 
         {cartItems.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-12 text-center">
-            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <ShoppingBag className="w-10 h-10 text-gray-300" />
+          <div className="bg-white/60 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-16 text-center animate-slide-up max-w-2xl mx-auto relative overflow-hidden">
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-50 rounded-full blur-3xl"></div>
+            <div className="w-24 h-24 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-white relative z-10">
+              <ShoppingBag className="w-10 h-10 text-gray-400" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Your cart is empty</h2>
-            <p className="text-gray-500 mb-6">Looks like you haven't added any eco-friendly items yet.</p>
-            <button className="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3 relative z-10">Your cart is feeling light</h2>
+            <p className="text-gray-500 mb-8 relative z-10 text-lg">Looks like you haven&apos;t added any eco-friendly items yet.</p>
+            <Link href="/" className="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 relative z-10">
               Continue Shopping
-            </button>
+            </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
             {/* Cart Items */}
-            <div className="lg:col-span-8 space-y-4">
-              {cartItems.map((item) => (
-                <div key={item.product_id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start transition-all hover:shadow-md">
-                  <div className="w-28 h-28 shrink-0 relative rounded-xl overflow-hidden bg-gray-50 border border-gray-100">
+            <div className="lg:col-span-8 flex flex-col gap-5">
+              {cartItems.map((item, index) => (
+                <div 
+                  key={item.product_id} 
+                  className="bg-white/70 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-white/60 p-5 sm:p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:bg-white/90 animate-slide-up group"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="w-32 h-32 shrink-0 relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-100/50 shadow-sm group-hover:scale-[1.02] transition-transform duration-500">
                     <Image
                       src={item.image}
                       alt={item.product_name}
@@ -44,44 +82,46 @@ export default function CartPage() {
                     />
                   </div>
 
-                  <div className="flex-1 flex flex-col w-full">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 pr-4">{item.product_name}</h3>
-                      <button
-                        onClick={() => removeItem(item.product_id)}
-                        className="text-gray-400 hover:text-red-500 transition-colors p-1"
-                        aria-label="Remove item"
-                      >
-                        <Trash2 className="w-5 h-5" />
-                      </button>
+                  <div className="flex-1 flex flex-col w-full h-full justify-between">
+                    <div>
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-xl font-bold text-gray-900 pr-4 leading-tight">{item.product_name}</h3>
+                        <button
+                          onClick={() => removeItem(item.product_id)}
+                          className="bg-red-50 text-red-400 hover:bg-red-500 hover:text-white transition-colors p-2 rounded-xl"
+                          aria-label="Remove item"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                      
+                      <div className="text-emerald-600 font-extrabold text-xl mb-4">
+                        ₹{item.product_price.toLocaleString()}
+                      </div>
                     </div>
 
-                    <div className="text-emerald-700 font-bold text-lg mb-4">
-                      ₹{item.product_price.toLocaleString()}
-                    </div>
-
-                    <div className="flex items-center gap-4 mt-auto">
-                      <div className="flex items-center bg-gray-50 rounded-lg border border-gray-200 p-1">
+                    <div className="flex items-center gap-6 mt-auto">
+                      <div className="flex items-center bg-gray-50/80 backdrop-blur-sm rounded-xl border border-gray-200/50 p-1 shadow-inner">
                         <button
                           onClick={() => updateQuantity(item.product_id, -1)}
-                          className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
+                          className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-emerald-700 hover:bg-white rounded-lg transition-all shadow-sm disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-gray-600 disabled:shadow-none"
                           disabled={item.quantity <= 1}
                         >
                           <Minus className="w-4 h-4" />
                         </button>
-                        <span className="w-10 text-center font-medium text-gray-900 text-sm">
+                        <span className="w-12 text-center font-bold text-gray-900 text-base">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(item.product_id, 1)}
-                          className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-emerald-600 hover:bg-emerald-50 rounded-md transition-colors"
+                          className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-emerald-700 hover:bg-white  rounded-lg transition-all shadow-sm"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
                       </div>
 
-                      <div className="text-sm text-gray-500 font-medium">
-                        Total: <span className="text-gray-900 font-semibold">₹{(item.product_price * item.quantity).toLocaleString()}</span>
+                      <div className="text-sm text-gray-500 font-medium ml-auto">
+                        Total: <span className="text-gray-900 font-bold text-lg">₹{(item.product_price * item.quantity).toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
@@ -90,49 +130,79 @@ export default function CartPage() {
             </div>
 
             {/* Order Summary */}
-            <div className="lg:col-span-4 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 sticky top-24">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
+            <div className="lg:col-span-4 bg-white/70 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/60 p-6 sm:p-8 sticky top-24 animate-slide-up delay-200">
+              <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                Order Summary
+              </h2>
 
-              <div className="space-y-4 text-sm mb-6">
-                <div className="flex justify-between text-gray-600">
+              <div className="space-y-4 text-base mb-6">
+                <div className="flex justify-between text-gray-500 font-medium">
                   <span>Subtotal</span>
-                  <span className="font-medium text-gray-900">₹{subtotal.toLocaleString()}</span>
+                  <span className="text-gray-900">₹{subtotal.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-500 font-medium">
                   <span>Standard Shipping</span>
-                  <span className="font-medium text-gray-900">₹{shippingFee.toLocaleString()}</span>
+                  <span className="text-gray-900">₹{shippingFee.toLocaleString()}</span>
                 </div>
                 {discountApplied > 0 && (
-                  <div className="flex justify-between text-emerald-600">
+                  <div className="flex justify-between text-emerald-600 font-semibold bg-emerald-50 p-2 rounded-lg -mx-2 px-2">
                     <span>Discount</span>
-                    <span className="font-medium">-₹{discountApplied.toLocaleString()}</span>
+                    <span>-₹{discountApplied.toLocaleString()}</span>
                   </div>
                 )}
               </div>
 
-              <div className="border-t border-gray-100 pt-4 mb-8">
-                <div className="flex justify-between items-end">
-                  <span className="text-lg font-bold text-gray-900">Grand Total</span>
-                  <span className="text-2xl font-bold text-emerald-600">₹{grandTotal.toLocaleString()}</span>
+              <div className="flex justify-between items-end bg-gradient-to-r from-gray-50 to-gray-100/50 p-4 rounded-2xl mb-8 border border-white">
+                <div>
+                  <span className="text-sm text-gray-500 font-medium block">Total Amount</span>
+                  <span className="text-xs text-gray-400 mt-0.5 block">Inclusive of all taxes</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1 text-right">Inclusive of all taxes</p>
+                <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">
+                  ₹{grandTotal.toLocaleString()}
+                </span>
               </div>
 
               <Link
                 href="/checkout/address"
-                className="w-full flex justify-center items-center py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="w-full flex justify-center items-center py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-lg transition-all duration-300 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transform hover:-translate-y-1 mb-6"
               >
                 Proceed to Checkout
               </Link>
 
-              <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500">
-                <Leaf className="w-4 h-4 text-emerald-500" />
-                <span>100% Eco-friendly packaging</span>
+              <div className="flex flex-col items-center justify-center gap-3 text-xs text-gray-500 font-medium hidden lg:flex bg-gray-50/50 p-4 rounded-xl border border-dashed border-gray-200">
+                <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full">
+                  <Leaf className="w-4 h-4" />
+                  <span className="font-semibold">100% Eco-friendly packaging</span>
+                </div>
+                <p>Every purchase plants a tree.</p>
               </div>
             </div>
           </div>
         )}
       </main>
+
+      {/* Sticky Bottom Action Bar for Mobile - Premium Glass Look */}
+      {cartItems.length > 0 && (
+        <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-white/40 p-4 shadow-[0_-8px_30px_rgba(0,0,0,0.06)] z-50 lg:hidden animate-slide-up">
+          <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="hidden sm:flex flex-col">
+              <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Amount</span>
+              <span className="text-emerald-600 font-extrabold text-2xl">₹{grandTotal.toLocaleString()}</span>
+            </div>
+            
+            <div className="w-full sm:w-auto flex flex-1 justify-end">
+              <Link
+                href="/checkout/address"
+                className="w-full sm:w-auto flex justify-center items-center py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-lg transition-all shadow-lg shadow-emerald-500/25 gap-2 group"
+              >
+                Proceed to Checkout
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
+
