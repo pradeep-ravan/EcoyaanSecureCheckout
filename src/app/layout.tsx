@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CheckoutProvider } from "@/context/CheckoutContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { fetchCheckoutData } from "@/lib/api";
 
 const geistSans = Geist({
@@ -27,17 +28,24 @@ export default async function RootLayout({
   const initialData = await fetchCheckoutData();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 transition-colors duration-500`}
       >
-        <CheckoutProvider
-          initialCartItems={initialData.cartItems}
-          initialShippingFee={initialData.shipping_fee}
-          initialDiscount={initialData.discount_applied}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
         >
-          {children}
-        </CheckoutProvider>
+          <CheckoutProvider
+            initialCartItems={initialData.cartItems}
+            initialShippingFee={initialData.shipping_fee}
+            initialDiscount={initialData.discount_applied}
+          >
+            {children}
+          </CheckoutProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
