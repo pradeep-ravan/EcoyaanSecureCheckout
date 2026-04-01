@@ -34,8 +34,8 @@ export default function PaymentPage() {
                 <Header />
                 <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex justify-center items-center h-screen pt-24">
                   <div className="relative">
-                     <div className="absolute -inset-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 blur-xl opacity-50 animate-pulse"></div>
-                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 relative z-10"></div>
+                     <div className="absolute -inset-4 rounded-full bg-primary-100 dark:bg-primary-900/30 blur-xl opacity-50 animate-pulse"></div>
+                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 relative z-10"></div>
                   </div>
                 </main>
             </>
@@ -55,21 +55,21 @@ export default function PaymentPage() {
             <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 pb-32 lg:pb-32 pt-24 animate-fade-in relative z-0">
                 
                 {/* Subtle background blur blobs */}
-                <div className="absolute top-20 right-10 w-64 h-64 bg-teal-100/40 dark:bg-teal-900/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+                <div className="absolute top-20 right-10 w-64 h-64 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-                <Link href="/checkout/address" className="inline-flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors mb-8 text-sm font-semibold tracking-wide uppercase">
+                <Link href="/checkout/address" className="inline-flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-primary-700 dark:hover:text-primary-400 transition-colors mb-8 text-sm font-semibold tracking-wide uppercase">
                     <ArrowLeft className="w-4 h-4" />
                     Back to Address
                 </Link>
 
                 <div className="flex items-center gap-4 mb-10 animate-slide-up">
-                    <div className="bg-gradient-to-tr from-emerald-100 to-teal-50 dark:from-emerald-900/40 dark:to-teal-900/20 p-3 rounded-2xl shadow-inner border border-white dark:border-slate-800">
-                        <CreditCard className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                    <div className="bg-gradient-to-tr from-primary-100 to-primary-50 dark:from-primary-900/40 dark:to-primary-900/20 p-3 rounded-2xl shadow-inner border border-white dark:border-slate-800">
+                        <CreditCard className="w-8 h-8 text-primary-600 dark:text-primary-400" />
                     </div>
                     <div>
                         <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-slate-100 dark:via-slate-200 dark:to-slate-100 tracking-tight">Secure Payment</h1>
                         <p className="text-gray-500 dark:text-slate-400 mt-1 font-medium flex items-center gap-1">
-                            <Lock className="w-4 h-4 text-emerald-400 dark:text-emerald-500" /> Encrypted and safe
+                            <Lock className="w-4 h-4 text-primary-400 dark:text-primary-500" /> Encrypted and safe
                         </p>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ export default function PaymentPage() {
                         {/* Address Summary */}
                         <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/60 dark:border-slate-800/50 p-6 sm:p-8 animate-slide-up delay-100">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="bg-emerald-50 dark:bg-emerald-900/40 p-2 rounded-xl text-emerald-600 dark:text-emerald-400">
+                                <div className="bg-primary-50 dark:bg-primary-900/40 p-2 rounded-xl text-primary-600 dark:text-primary-400">
                                     <Truck className="w-5 h-5" />
                                 </div>
                                 <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100 tracking-tight">Shipping To</h2>
@@ -89,7 +89,7 @@ export default function PaymentPage() {
                             <div className="bg-gradient-to-br from-gray-50/80 to-white/50 dark:from-slate-800/80 dark:to-slate-800/30 rounded-2xl p-5 border border-gray-100/80 dark:border-slate-700/50 shadow-inner relative group transition-all duration-300 hover:shadow-md dark:hover:shadow-slate-900/50">
                                 <Link 
                                     href="/checkout/address" 
-                                    className="absolute top-5 right-5 text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 bg-white dark:bg-slate-800 shadow-sm border border-emerald-100 dark:border-emerald-800/50 px-4 py-1.5 rounded-full transition-all group-hover:-translate-y-0.5"
+                                    className="absolute top-5 right-5 text-sm font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 bg-white dark:bg-slate-800 shadow-sm border border-primary-100 dark:border-primary-800/50 px-4 py-1.5 rounded-full transition-all group-hover:-translate-y-0.5"
                                 >
                                     Change
                                 </Link>
@@ -109,7 +109,7 @@ export default function PaymentPage() {
                         <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] border border-white/60 dark:border-slate-800/50 p-6 sm:p-8 animate-slide-up delay-200">
                             <div className="flex items-center justify-between mb-8">
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-emerald-50 dark:bg-emerald-900/40 p-2 rounded-xl text-emerald-600 dark:text-emerald-400">
+                                    <div className="bg-primary-50 dark:bg-primary-900/40 p-2 rounded-xl text-primary-600 dark:text-primary-400">
                                         <Lock className="w-5 h-5" />
                                     </div>
                                     <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100 tracking-tight">Payment Method</h2>
@@ -121,10 +121,10 @@ export default function PaymentPage() {
                             </div>
 
                             <div className="space-y-4">
-                                <label className="flex items-center p-5 border-2 border-emerald-400 dark:border-emerald-500 rounded-2xl bg-gradient-to-r from-emerald-50/80 to-teal-50/30 dark:from-emerald-900/40 dark:to-teal-900/20 cursor-pointer transition-all shadow-sm">
-                                    <input type="radio" readOnly checked className="w-5 h-5 text-emerald-600 focus:ring-emerald-500" />
+                                <label className="flex items-center p-5 border-2 border-primary-400 dark:border-primary-500 rounded-2xl bg-gradient-to-r from-primary-50/80 to-primary-100/30 dark:from-primary-900/40 dark:to-primary-900/20 cursor-pointer transition-all shadow-sm">
+                                    <input type="radio" readOnly checked className="w-5 h-5 text-primary-600 focus:ring-primary-500" />
                                     <span className="ml-4 font-bold text-gray-900 dark:text-slate-100 text-lg">Credit / Debit Card</span>
-                                    <Sparkles className="w-4 h-4 text-emerald-500 dark:text-emerald-400 ml-auto" />
+                                    <Sparkles className="w-4 h-4 text-primary-500 dark:text-primary-400 ml-auto" />
                                 </label>
                                 <label className="flex items-center p-5 border border-white dark:border-slate-800 rounded-2xl bg-white/50 dark:bg-slate-900/50 cursor-not-allowed opacity-60 transition-all hover:bg-white/80 dark:hover:bg-slate-800/80">
                                     <input type="radio" disabled className="w-5 h-5 text-gray-400 dark:text-slate-600" />
@@ -173,7 +173,7 @@ export default function PaymentPage() {
                                 <span className="text-gray-900 dark:text-slate-100">₹{shippingFee.toLocaleString()}</span>
                             </div>
                             {discountApplied > 0 && (
-                                <div className="flex justify-between text-emerald-600 dark:text-emerald-400 font-semibold bg-emerald-50 dark:bg-emerald-900/30 p-2 rounded-lg -mx-2 px-2">
+                                <div className="flex justify-between text-primary-600 dark:text-primary-400 font-semibold bg-primary-50 dark:bg-primary-900/30 p-2 rounded-lg -mx-2 px-2">
                                     <span>Discount</span>
                                     <span>-₹{discountApplied.toLocaleString()}</span>
                                 </div>
@@ -183,12 +183,12 @@ export default function PaymentPage() {
                                     <span className="text-sm text-gray-500 dark:text-slate-400 font-medium block">Total Amount</span>
                                     <span className="text-xs text-gray-400 dark:text-slate-500 mt-0.5 block">Inclusive of all taxes</span>
                                 </div>
-                                <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">₹{grandTotal.toLocaleString()}</span>
+                                <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500 dark:from-primary-400 dark:to-primary-400">₹{grandTotal.toLocaleString()}</span>
                             </div>
                         </div>
 
                         <p className="text-xs text-center text-gray-500 dark:text-slate-400 flex justify-center items-center gap-1.5 font-medium bg-gray-50/80 dark:bg-slate-800/50 rounded-full py-2">
-                            <Lock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Payments are 100% secure and encrypted
+                            <Lock className="w-3.5 h-3.5 text-primary-600 dark:text-primary-400" /> Payments are 100% secure and encrypted
                         </p>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ export default function PaymentPage() {
                     <button
                         onClick={handlePayment}
                         disabled={isProcessing}
-                        className={`flex-1 sm:flex-[2] flex justify-center items-center py-4 px-8 rounded-2xl font-bold text-lg transition-all shadow-lg gap-2 group ${isProcessing ? 'bg-emerald-400 dark:bg-emerald-500/80 text-white cursor-wait opacity-80' : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-500/25 hover:shadow-emerald-500/40 transform hover:-translate-y-0.5'}`}
+                        className={`flex-1 sm:flex-[2] flex justify-center items-center py-4 px-8 rounded-2xl font-bold text-lg transition-all shadow-lg gap-2 group ${isProcessing ? 'bg-primary-400 dark:bg-primary-500/80 text-white cursor-wait opacity-80' : 'bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white shadow-primary-500/25 dark:shadow-primary-900/25 hover:shadow-primary-500/40 transform hover:-translate-y-0.5'}`}
                     >
                         {isProcessing ? (
                             <span className="flex items-center gap-2">

@@ -121,8 +121,8 @@ export default function AddressPage() {
                 <Header />
                 <main className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 flex justify-center items-center h-screen pt-24">
                   <div className="relative">
-                     <div className="absolute -inset-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 blur-xl opacity-50 animate-pulse"></div>
-                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 relative z-10"></div>
+                     <div className="absolute -inset-4 rounded-full bg-primary-100 dark:bg-primary-900/30 blur-xl opacity-50 animate-pulse"></div>
+                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 relative z-10"></div>
                   </div>
                 </main>
             </>
@@ -137,16 +137,16 @@ export default function AddressPage() {
             <main className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 pb-32 lg:pb-32 pt-24 animate-fade-in relative z-0">
                 
                 {/* Subtle background blur blobs */}
-                <div className="absolute top-20 right-10 w-64 h-64 bg-teal-100/40 dark:bg-teal-900/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+                <div className="absolute top-20 right-10 w-64 h-64 bg-primary-100/40 dark:bg-primary-900/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
                 
-                <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors mb-8 text-sm font-semibold tracking-wide uppercase">
+                <Link href="/" className="inline-flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-primary-700 dark:hover:text-primary-400 transition-colors mb-8 text-sm font-semibold tracking-wide uppercase">
                     <ArrowLeft className="w-4 h-4" />
                     Back to Cart
                 </Link>
 
                 <div className="flex items-center gap-4 mb-10 animate-slide-up">
-                    <div className="bg-gradient-to-tr from-emerald-100 to-teal-50 dark:from-emerald-900/40 dark:to-teal-900/20 p-3 rounded-2xl shadow-inner border border-white dark:border-slate-800">
-                        <MapPin className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                    <div className="bg-gradient-to-tr from-primary-100 to-primary-50 dark:from-primary-900/40 dark:to-primary-900/20 p-3 rounded-2xl shadow-inner border border-white dark:border-slate-800">
+                        <MapPin className="w-8 h-8 text-primary-600 dark:text-primary-400" />
                     </div>
                     <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-slate-100 dark:via-slate-200 dark:to-slate-100 tracking-tight">Shipping Address</h1>
                 </div>
@@ -157,7 +157,7 @@ export default function AddressPage() {
                             <h2 className="text-xl font-bold text-gray-900 dark:text-slate-100">Select an Address</h2>
                             <button 
                                 onClick={handleAddNewClick}
-                                className="flex items-center gap-1.5 text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 px-4 py-2 rounded-full transition-colors border border-emerald-100/50 dark:border-emerald-800/30"
+                                className="flex items-center gap-1.5 text-sm font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 bg-primary-50 dark:bg-primary-900/30 px-4 py-2 rounded-full transition-colors border border-primary-100/50 dark:border-primary-800/30"
                             >
                                 <Plus className="w-4 h-4" /> Add New
                             </button>
@@ -170,11 +170,11 @@ export default function AddressPage() {
                                     <div 
                                         key={addr.id}
                                         onClick={() => handleSelectAddress(addr)}
-                                        className={`relative p-6 rounded-3xl border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 ${isSelected ? 'border-emerald-400 dark:border-emerald-500 bg-gradient-to-b from-emerald-50/80 to-teal-50/30 dark:from-emerald-900/40 dark:to-teal-900/20 shadow-[0_8px_30px_rgb(16,185,129,0.1)] dark:shadow-[0_8px_30px_rgb(16,185,129,0.2)]' : 'border-white dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm shadow-[0_4px_20px_rgb(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgb(0,0,0,0.2)] hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:bg-white/90 dark:hover:bg-slate-800/90 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]'}`}
+                                         className={`relative p-6 rounded-3xl border-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 ${isSelected ? 'border-primary-400 dark:border-primary-500 bg-gradient-to-b from-primary-50/80 to-primary-100/30 dark:from-primary-900/40 dark:to-primary-900/20 shadow-[0_8px_30px_rgb(var(--primary-500-rgb),0.1)] dark:shadow-[0_8px_30px_rgb(var(--primary-500-rgb),0.2)]' : 'border-white dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 backdrop-blur-sm shadow-[0_4px_20px_rgb(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgb(0,0,0,0.2)] hover:border-primary-200 dark:hover:border-primary-700/50 hover:bg-white/90 dark:hover:bg-slate-800/90 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]'}`}
                                     >
                                         {isSelected && (
-                                            <div className="absolute top-5 right-5 text-emerald-500 animate-fade-in drop-shadow-sm">
-                                                <CheckCircle2 className="w-7 h-7 flex-shrink-0 bg-white dark:bg-emerald-950 rounded-full" />
+                                            <div className="absolute top-5 right-5 text-primary-500 animate-fade-in drop-shadow-sm">
+                                                <CheckCircle2 className="w-7 h-7 flex-shrink-0 bg-white dark:bg-primary-950 rounded-full" />
                                             </div>
                                         )}
                                         <p className="font-extrabold text-gray-900 dark:text-slate-100 mb-2 pr-10 text-lg tracking-tight">{addr.fullName}</p>
@@ -220,7 +220,7 @@ export default function AddressPage() {
                                         id="fullName"
                                         value={address.fullName}
                                         onChange={(e) => setAddress({ ...address, fullName: e.target.value })}
-                                        className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm ${errors.fullName ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700'}`}
+                                        className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-sm ${errors.fullName ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}`}
                                         placeholder="John Doe"
                                     />
                                     {errors.fullName && <p className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1.5 font-medium animate-fade-in"><AlertCircle className="w-4 h-4" />{errors.fullName}</p>}
@@ -235,7 +235,7 @@ export default function AddressPage() {
                                             id="email"
                                             value={address.email}
                                             onChange={(e) => setAddress({ ...address, email: e.target.value })}
-                                            className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm ${errors.email ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700'}`}
+                                            className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-sm ${errors.email ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}`}
                                             placeholder="john@example.com"
                                         />
                                         {errors.email && <p className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1.5 font-medium animate-fade-in"><AlertCircle className="w-4 h-4" />{errors.email}</p>}
@@ -249,7 +249,7 @@ export default function AddressPage() {
                                             id="phone"
                                             value={address.phone}
                                             onChange={(e) => setAddress({ ...address, phone: e.target.value })}
-                                            className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm ${errors.phone ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700'}`}
+                                            className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-sm ${errors.phone ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}`}
                                             placeholder="9876543210"
                                         />
                                         {errors.phone && <p className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1.5 font-medium animate-fade-in"><AlertCircle className="w-4 h-4" />{errors.phone}</p>}
@@ -263,12 +263,12 @@ export default function AddressPage() {
                                         {/* PIN Code */}
                                         <div>
                                             <label htmlFor="pinCode" className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">PIN Code</label>
-                                            <input
+                                             <input
                                                 type="text"
                                                 id="pinCode"
                                                 value={address.pinCode}
                                                 onChange={(e) => setAddress({ ...address, pinCode: e.target.value })}
-                                                className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm ${errors.pinCode ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700'}`}
+                                                className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-sm ${errors.pinCode ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}`}
                                                 placeholder="560001"
                                                 maxLength={6}
                                             />
@@ -278,12 +278,12 @@ export default function AddressPage() {
                                         {/* City */}
                                         <div>
                                             <label htmlFor="city" className="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-2">City</label>
-                                            <input
+                                             <input
                                                 type="text"
                                                 id="city"
                                                 value={address.city}
                                                 onChange={(e) => setAddress({ ...address, city: e.target.value })}
-                                                className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm ${errors.city ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700'}`}
+                                                className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-sm ${errors.city ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}`}
                                                 placeholder="Bengaluru"
                                             />
                                             {errors.city && <p className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1.5 font-medium animate-fade-in"><AlertCircle className="w-4 h-4" />{errors.city}</p>}
@@ -298,7 +298,7 @@ export default function AddressPage() {
                                             id="state"
                                             value={address.state}
                                             onChange={(e) => setAddress({ ...address, state: e.target.value })}
-                                            className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 shadow-sm ${errors.state ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-700'}`}
+                                            className={`w-full px-5 py-4 rounded-2xl border bg-white/50 dark:bg-slate-900/50 text-gray-900 dark:text-slate-100 placeholder:text-gray-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 shadow-sm ${errors.state ? 'border-red-300 dark:border-red-500/50 focus:ring-red-500/50' : 'border-gray-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-700'}`}
                                             placeholder="Karnataka"
                                         />
                                         {errors.state && <p className="mt-2 text-sm text-red-500 dark:text-red-400 flex items-center gap-1.5 font-medium animate-fade-in"><AlertCircle className="w-4 h-4" />{errors.state}</p>}
@@ -323,7 +323,7 @@ export default function AddressPage() {
                     
                     <button
                         onClick={handleNextStep}
-                        className="flex-1 sm:flex-[2] flex justify-center items-center py-4 px-8 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-lg transition-all shadow-lg shadow-emerald-500/25 dark:shadow-emerald-900/40 hover:shadow-emerald-500/40 transform hover:-translate-y-0.5 gap-2 group"
+                        className="flex-1 sm:flex-[2] flex justify-center items-center py-4 px-8 rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold text-lg transition-all shadow-lg shadow-primary-500/25 dark:shadow-primary-900/40 hover:shadow-primary-500/40 transform hover:-translate-y-0.5 gap-2 group"
                     >
                         Next Step
                         <ArrowRight className="w-5 h-5 hidden sm:block group-hover:translate-x-1 transition-transform" />
