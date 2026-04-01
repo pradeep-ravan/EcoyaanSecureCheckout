@@ -164,7 +164,7 @@ export default function CartPage() {
 
               <Link
                 href="/checkout/address"
-                className="w-full flex justify-center items-center py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-lg transition-all duration-300 shadow-lg shadow-emerald-500/25 dark:shadow-emerald-900/20 transform hover:-translate-y-1 mb-6"
+                className="w-full hidden lg:flex justify-center items-center py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-lg transition-all duration-300 shadow-lg shadow-emerald-500/25 dark:shadow-emerald-900/20 transform hover:-translate-y-1 mb-6"
               >
                 Proceed to Checkout
               </Link>
